@@ -572,4 +572,4 @@ struct ColorList {
 
 ## Attribution
 
-This guidelines are originally forked from https://github.com/hyperoslo/iOS-playbook
+This guideline is originally forked from https://github.com/hyperoslo/iOS-playbook
