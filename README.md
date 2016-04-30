@@ -7,6 +7,7 @@ Our overarching goals are conciseness, readability, and simplicity.
 
 * [Naming](#naming)
   * [Class Prefixes](#class-prefixes)
+  * [Localizations](#localizations)
 * [Spacing and Indentation](#spacing-and-indentation)
 * [Classes and Structs](#classes-and-structs)
   * [Use of Self](#use-of-self)
@@ -107,6 +108,19 @@ If you need to expose a Swift type for use within Objective-C you can provide a 
 }
 ```
 
+### Localizations
+
+Always use NSLocalizationString with default Localizable.strings table. You may use diferent localization table for resources like hardcoded URLs (example LocalizedResources.strings). Use dot style namespace keys in order to distinguish context and avoid duplicate keys with multiple comments.
+
+**Preferred**
+```swift
+let title = NSLocalizedString("settings.terms-and-conditions.title", comment: "Terms and conditions title")
+```
+
+**Not preferred**
+```swift
+let title = NSLocalizedString("Terms and conditions", tableName: "MyProjectName", bundle: NSBundle.mainBundle(), comment: "Navigation bar title")
+```
 
 ## Spacing and Indentation
 
