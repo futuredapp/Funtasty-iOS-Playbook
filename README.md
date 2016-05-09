@@ -397,6 +397,22 @@ if let textContainer = textContainer {
 }
 ```
 
+For multiple optional binding use only one let:
+
+**Preferred:**
+```swift
+if let textContainer = textContainer, view = view {
+  // do many things with textContainer
+}
+```
+
+**Not preferred:**
+```swift
+if let textContainer = textContainer, let view = view {
+  // do many things with textContainer
+}
+```
+
 Use `guard` unwrapping if the object is required for continuing the operation.
 `guard` is prefered when doing early returns inside of a function.
 
