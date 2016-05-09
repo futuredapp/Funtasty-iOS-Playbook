@@ -397,7 +397,7 @@ if let textContainer = textContainer {
 }
 ```
 
-For multiple optional binding use only one let:
+For multiple optional bindings use only one let:
 
 **Preferred:**
 ```swift
