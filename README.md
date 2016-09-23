@@ -30,7 +30,7 @@ Our overarching goals are conciseness, readability, and simplicity.
 
 ## Naming
 
-Naming guidelines inherit from the Swift API guidelines (https://swift.org/documentation/api-design-guidelines/). If our naming conventions aren't clear or enough descriptive, always refere to the Swift design guidelines.
+> Naming guidelines inherit from the Swift API guidelines (https://swift.org/documentation/api-design-guidelines/). If our naming conventions are not clear or descriptive enough, always refer to the Swift design guidelines.
 
 Use descriptive names with camel case for classes, methods, variables, etc. Class names and constants in module scope should be capitalized, while method names and variables should start with a lower case letter.
 
