@@ -30,6 +30,8 @@ Our overarching goals are conciseness, readability, and simplicity.
 
 ## Naming
 
+> Naming guidelines inherit from the Swift API guidelines (https://swift.org/documentation/api-design-guidelines/). If our naming conventions are not clear or descriptive enough, always refer to the Swift design guidelines.
+
 Use descriptive names with camel case for classes, methods, variables, etc. Class names and constants in module scope should be capitalized, while method names and variables should start with a lower case letter.
 
 **Preferred:**
@@ -57,29 +59,26 @@ class app_widgetContainer {
 For functions and init methods, prefer named parameters for all arguments unless the context is very clear. Include external parameter names if it makes function calls more readable.
 
 ```swift
-func dateFromString(dateString: String) -> NSDate { ... }
-func convertPointAt(#column: Int, #row: Int) -> CGPoint { ... }
-func timedAction(#delay: NSTimeInterval, perform action: SKAction) -> SKAction! { ... }
+func date(from string: String) -> Date { ... }
+func convertPointAt(column: Int, row: Int) -> CGPoint { ... }
 
 // would be called like this:
-dateFromString("2014-03-14")
+date(from: "2014-03-14")
 convertPointAt(column: 42, row: 13)
-timedAction(delay: 1.0, perform: someOtherAction)
 ```
 
 For methods, follow the standard Apple convention of referring to the first parameter in the method name:
+
 ```swift
 class Guideline {
-  func combineWithString(incoming: String, options: Dictionary?) { ... }
-  func upvoteBy(amount: Int) { ... }
+  func combine(with string: String, options: Dictionary?) { ... }
+  func upvote(by amount: Int) { ... }
 }
 ```
 
 When referring to functions in prose include the required parameter names from the caller's perspective. If the context is clear and the exact signature is not important, you can use just the method name.
 
 > Call `convertPointAt(column:row:)` from your own `init` implementation.
->
-> If you implement `timedAction`, remember to provide an appropriate delay value.
 >
 > You shouldn't call the data source method `tableView(_:cellForRowAtIndexPath:)` directly.
 
@@ -317,7 +316,7 @@ The example above demonstrates the following style guidelines:
 Keep short function declarations on one line including the opening brace:
 
 ```swift
-func reticulateSplines(spline: [Double]) -> Bool {
+func reticulate(spline: [Double]) -> Bool {
   // reticulate code goes here
 }
 ```
@@ -325,8 +324,8 @@ func reticulateSplines(spline: [Double]) -> Bool {
 For functions with long signatures, add line breaks at appropriate points and add an extra indent on subsequent lines:
 
 ```swift
-func reticulateSplines(spline: [Double], adjustmentFactor: Double,
-    translateConstant: Int, comment: String) -> Bool {
+func reticulate(spline: [Double], with factor: Double,
+    translate constant: Int, comment: String) -> Bool {
   // reticulate code goes here
 }
 ```
@@ -337,7 +336,7 @@ func reticulateSplines(spline: [Double], adjustmentFactor: Double,
 Use trailing closure syntax wherever possible. In all cases, give the closure parameters descriptive names:
 
 ```swift
-return SKAction.customActionWithDuration(effect.duration) { node, elapsedTime in
+return SKAction.customAction(withDuration: effect.duration) { node, elapsedTime in
   // more code goes here
 }
 ```
@@ -397,22 +396,6 @@ if let textContainer = textContainer {
 }
 ```
 
-For multiple optional bindings use only one let:
-
-**Preferred:**
-```swift
-if let textContainer = textContainer, view = view {
-  // do many things with textContainer
-}
-```
-
-**Not preferred:**
-```swift
-if let textContainer = textContainer, let view = view {
-  // do many things with textContainer
-}
-```
-
 Use `guard` unwrapping if the object is required for continuing the operation.
 `guard` is prefered when doing early returns inside of a function.
 
@@ -460,7 +443,7 @@ let bounds = CGRectMake(40.0, 20.0, 120.0, 80.0)
 var centerPoint = CGPointMake(96.0, 42.0)
 ```
 
-Prefer the struct-scope constants `CGRect.infiniteRect`, `CGRect.nullRect`, etc. over global constants `CGRectInfinite`, `CGRectNull`, etc. For existing variables, you can use the shorter `.zeroRect`.
+Prefer the struct-scope constants `CGRect.infinite`, `CGRect.null`, etc. over global constants `CGRectInfinite`, `CGRectNull`, etc. For existing variables, you can use the shorter `.zero`.
 
 
 ### Type Inference
@@ -539,34 +522,6 @@ aware of.
 Reference: [apple/swift/stdlib/public/core/Sequence.swift](https://github.com/apple/swift/blob/master/stdlib/public/core/Sequence.swift#L119-L123)
 
 So if the operation demands more control, then use `for-in`.
-
-#### for-in
-
-Prefer the `for-in` style of `for` loop over the `for-condition-increment` style.
-
-**Preferred:**
-```swift
-for _ in 0..<3 {
-  println("Hello three times")
-}
-
-for (index, person) in enumerate(attendeeList) {
-  println("\(person) is at position #\(index)")
-}
-```
-
-**Not Preferred:**
-```swift
-for var i = 0; i < 3; i++ {
-  println("Hello three times")
-}
-
-for var i = 0; i < attendeeList.count; i++ {
-  let person = attendeeList[i]
-  println("\(person) is at position #\(i)")
-}
-```
-
 
 ## Semicolons
 
