@@ -80,8 +80,6 @@ When referring to functions in prose include the required parameter names from t
 
 > Call `convertPointAt(column:row:)` from your own `init` implementation.
 >
-> If you implement `timedAction`, remember to provide an appropriate delay value.
->
 > You shouldn't call the data source method `tableView(_:cellForRowAtIndexPath:)` directly.
 
 When in doubt, look at how Xcode lists the method in the jump bar – our style here matches that.
