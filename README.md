@@ -443,7 +443,7 @@ let bounds = CGRectMake(40.0, 20.0, 120.0, 80.0)
 var centerPoint = CGPointMake(96.0, 42.0)
 ```
 
-Prefer the struct-scope constants `CGRect.infiniteRect`, `CGRect.nullRect`, etc. over global constants `CGRectInfinite`, `CGRectNull`, etc. For existing variables, you can use the shorter `.zeroRect`.
+Prefer the struct-scope constants `CGRect.infinite`, `CGRect.null`, etc. over global constants `CGRectInfinite`, `CGRectNull`, etc. For existing variables, you can use the shorter `.zero`.
 
 
 ### Type Inference
